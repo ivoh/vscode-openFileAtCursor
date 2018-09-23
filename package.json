@@ -24,6 +24,14 @@
                 "title": "Open file at cursor"
             }
         ],
+        "keybindings": [
+            {
+                "command": "extension.openFileAtCursor",
+                "key": "alt+d",
+                "mac": "alt+d",
+                "when": "!terminalFocus"
+            }
+        ],
         "configuration": {
             "title": "Open File At Cursor",
             "properties": {

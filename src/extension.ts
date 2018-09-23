@@ -61,8 +61,8 @@ export function activate(context: vscode.ExtensionContext) {
 
                     console.log(`Opened file is '${filename}' and path is '${openedNormalizedFilePath}'`);
                 } else {
-                    showErrorMsg("Current position is not valid, try to put the cursor beetween quotes or double quotes");
-                    return false;          
+                    showErrorMsg("Current position does not point to any word. Move cursor to word or select text.");
+                    return;          
                 }
             } else {
                 const selectedWord = texteditor.document.getText(filenameUnderCursor);
