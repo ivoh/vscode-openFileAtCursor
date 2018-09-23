@@ -24,6 +24,26 @@
                 "title": "Open file at cursor"
             }
         ],
+        "configuration": {
+            "title": "Open File At Cursor",
+            "properties": {
+                "openfileatcursor.filenameRegEx": {
+                    "type": "string",
+                    "default": "([\\w|\\.|\\-]+)",
+                    "description": "Custom matching regExp to detect the unquoted file (defaul words with dots and -). "
+                },
+				"openfileatcursor.shouldDefaultsToCurrentFile": {
+					"type": "boolean",
+					"default": true,
+					"description": "Use current file name (without extension) if no word is at the cursor location. Otherwise show error."
+                },
+				"openfileatcursor.shouldUseSelection": {
+					"type": "boolean",
+					"default": true,
+					"description": "Use text selection to look for instead of a word at cursor position."
+				}                
+            }
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
