@@ -9,10 +9,10 @@ export function activate(context: vscode.ExtensionContext) {
 
     const extConfiguration = vscode.workspace.getConfiguration("openfileatcursor");
     const filenameRegEx = extConfiguration.get<string>("filenameRegEx");
-    const shouldDefaultsToCurrentFile = extConfiguration.get<boolean>("shouldDefaultsToCurrentFile");
+    const shouldDefaultToCurrentFile = extConfiguration.get<boolean>("shouldDefaultToCurrentFile");
     const shouldUseSelection = extConfiguration.get<boolean>("shouldUseSelection");
 
-    if (filenameRegEx === undefined || shouldDefaultsToCurrentFile === undefined || shouldUseSelection === undefined) {
+    if (filenameRegEx === undefined || shouldDefaultToCurrentFile === undefined || shouldUseSelection === undefined) {
         console.error("Configuration section is not valid.");
         return;
     }
@@ -54,7 +54,7 @@ export function activate(context: vscode.ExtensionContext) {
         if (selection.isEmpty || !shouldUseSelection) {
             let filenameUnderCursor = texteditor.document.getWordRangeAtPosition(selection.active, regex);
             if (filenameUnderCursor === undefined) {
-                if (shouldDefaultsToCurrentFile) {
+                if (shouldDefaultToCurrentFile) {
                     let openedNormalizedFilePath = texteditor.document.fileName.replace(/\\/g, '/');
                     filename = getFilenameFromPath(openedNormalizedFilePath);
 

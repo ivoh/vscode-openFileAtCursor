@@ -40,7 +40,7 @@
                     "default": "([\\w|\\.|\\-]+)",
                     "description": "Custom matching regExp to detect the unquoted file (defaul words with dots and -). "
                 },
-				"openfileatcursor.shouldDefaultsToCurrentFile": {
+				"openfileatcursor.shouldDefaultToCurrentFile": {
 					"type": "boolean",
 					"default": true,
 					"description": "Use current file name (without extension) if no word is at the cursor location. Otherwise show error."
