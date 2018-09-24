@@ -4,6 +4,7 @@
     "description": "VS Code extension for jumping to the file under the cursor.",
     "version": "0.0.1",
     "publisher": "ivoh",
+    "icon": "images/openFileIcon.png",
     "engines": {
         "vscode": "^1.27.0"
     },
