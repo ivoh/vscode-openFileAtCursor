@@ -2,7 +2,7 @@
     "name": "openfileatcursor",
     "displayName": "OpenFileAtCursor",
     "description": "VS Code extension for jumping to the file under the cursor.",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "ivoh",
     "icon": "images/openFileIcon.png",
     "engines": {
@@ -16,7 +16,12 @@
         "url": "https://github.com/ivoh/vscode-openFileAtCursor"
     },
     "keywords": [
-        "open-file", "navigation", "open", "selection", "keybindings", "jump"
+        "open-file",
+        "navigation",
+        "open",
+        "selection",
+        "keybindings",
+        "jump"
     ],
     "activationEvents": [
         "onCommand:extension.openFileAtCursor"
