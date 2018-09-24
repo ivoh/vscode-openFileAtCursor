@@ -78,10 +78,10 @@ export function activate(context: vscode.ExtensionContext) {
 
         if (filename.length > 0)
         {
-          filename = filename.trim()          
-          console.log(`ExecuteCommand quickOpen with file '${filename}'`)
+          filename = filename.trim();
+          console.log(`ExecuteCommand quickOpen with file '${filename}'`);
           // open dialog Go to File (Ctrl-P) with the file
-          let success = vscode.commands.executeCommand('workbench.action.quickOpen', filename);
+          vscode.commands.executeCommand('workbench.action.quickOpen', filename);
         }  
     });
 
