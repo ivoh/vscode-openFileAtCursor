@@ -14,7 +14,7 @@ Open file : alt+d
 ## Extension Settings
  
 * `openfileatcursor.filenameRegEx`: Custom matching regExp to detect the unquoted file (defaul words with dots and -). Default value:  `([\\w|\\.|\\-]+)`
-* `openfileatcursor.shouldDefaultsToCurrentFile`: Use current file name (without extension) if no word is at the cursor location. Otherwise show error. Default value: `true`.
+* `openfileatcursor.shouldDefaultToCurrentFile`: Use current file name (without extension) if no word is at the cursor location. Otherwise show error. Default value: `true`.
 * `openfileatcursor.shouldUseSelection`: Use text selection to look for instead of a word at cursor position. Default value: `true`.
 
 ## Release Notes
