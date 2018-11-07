@@ -46,7 +46,7 @@
             "properties": {
                 "openfileatcursor.filenameRegEx": {
                     "type": "string",
-                    "default": "([\\w|\\.|\\-]+)",
+                    "default": "([\\w\\.\\-]+)",
                     "description": "Custom matching regExp to detect the unquoted file (defaul words with dots and -). "
                 },
                 "openfileatcursor.shouldDefaultToCurrentFile": {
