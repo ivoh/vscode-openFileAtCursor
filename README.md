@@ -10,11 +10,13 @@ This extension is inspired by [Open file From Path](https://marketplace.visualst
 
 ## Shortcut
 ```
-Open file : alt+d
+Open file at cursor : Alt + D
+Open related file : Ctrl + Shift + Alt + D
 ```
 * takes selected text and look file with name that name or part of the name,
 * if nothing is selected then it takes current word under cursor (including dots)
 * if nothing is selected and no word is under cursor it looks for files that has base name similar to the current file (e.g. tests, configurations etc...)
+* Ctrl + Shift + Alt + D - opens file(s) related to the opened one (files with the same base name). Can be helpful to jump into test files or markup files, code behind files etc....
 
 ### Tips
 
@@ -33,8 +35,11 @@ Open file : alt+d
 
 ## Release Notes
 
-### 0.1.0
+### 0.3.0
+Added open related file command (Ctrl+Shift+Alt+D)
 
+
+### 0.1.0
 Initial release.
 
 
