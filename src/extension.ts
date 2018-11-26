@@ -21,7 +21,8 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
-    console.log('Extension "openfileatcursor" is now active!');
+    console.log(`Extension 'openfileatcursor' is now active!`);
+
 
 
     function showErrorMsg(message: string) {
@@ -42,10 +43,36 @@ export function activate(context: vscode.ExtensionContext) {
         return filenameCoreMatch[1];
     }
 
+    function getFilenameFromCurrentFile(currentFilename: string) {
+        let openedNormalizedFilePath = currentFilename.replace(/\\/g, '/');
+        let filename = getFilenameFromPath(openedNormalizedFilePath);
+
+        console.log(`Opened file is '${filename}' and path is '${openedNormalizedFilePath}'`);
+        return filename;
+    }
+
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerTextEditorCommand('extension.openFileAtCursor', (texteditor: vscode.TextEditor) => {
+
+
+    let disposableOpenRelatedCommand = vscode.commands.registerTextEditorCommand('extension.openRelatedFile', (texteditor: vscode.TextEditor) => {
+        // The code you place here will be executed every time your command is executed
+        let filename = getFilenameFromCurrentFile(texteditor.document.fileName);
+
+        if (filename.length > 0)
+        {
+          filename = filename.trim();
+          console.log(`ExecuteCommand quickOpen with file '${filename}'`);
+          // open dialog Go to File (Ctrl-P) with the file
+          vscode.commands.executeCommand('workbench.action.quickOpen', filename);
+        }  
+    });
+    console.log(`Command "extension.openRelatedFile" registered.`);
+    context.subscriptions.push(disposableOpenRelatedCommand);
+
+
+    let disposableOpenFileAtCursorCommand = vscode.commands.registerTextEditorCommand('extension.openFileAtCursor', (texteditor: vscode.TextEditor) => {
         // The code you place here will be executed every time your command is executed
 
         const selection = texteditor.selection;
@@ -55,10 +82,7 @@ export function activate(context: vscode.ExtensionContext) {
             let filenameUnderCursor = texteditor.document.getWordRangeAtPosition(selection.active, regex);
             if (filenameUnderCursor === undefined) {
                 if (shouldDefaultToCurrentFile) {
-                    let openedNormalizedFilePath = texteditor.document.fileName.replace(/\\/g, '/');
-                    filename = getFilenameFromPath(openedNormalizedFilePath);
-
-                    console.log(`Opened file is '${filename}' and path is '${openedNormalizedFilePath}'`);
+                    filename = getFilenameFromCurrentFile(texteditor.document.fileName);
                 } else {
                     showErrorMsg("Current position does not point to any word. Move cursor to word or select text.");
                     return;          
@@ -84,8 +108,8 @@ export function activate(context: vscode.ExtensionContext) {
           vscode.commands.executeCommand('workbench.action.quickOpen', filename);
         }  
     });
-
-    context.subscriptions.push(disposable);
+    console.log(`Command "extension.openFileAtCursor" registered.`);
+    context.subscriptions.push(disposableOpenFileAtCursorCommand);
 }
 
 // this method is called when your extension is deactivated

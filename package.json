@@ -23,7 +23,8 @@
         "jump"
     ],
     "activationEvents": [
-        "onCommand:extension.openFileAtCursor"
+        "onCommand:extension.openFileAtCursor",
+        "onCommand:extension.openRelatedFile"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -31,6 +32,10 @@
             {
                 "command": "extension.openFileAtCursor",
                 "title": "Open file at cursor"
+            },
+            {
+                "command": "extension.openRelatedFile",
+                "title": "Open related file"
             }
         ],
         "keybindings": [
@@ -39,6 +44,11 @@
                 "key": "alt+d",
                 "mac": "alt+d",
                 "when": "!terminalFocus"
+            },
+            {
+                "command": "extension.openRelatedFile",
+                "key": "alt+shift+ctrl+d",
+                "mac": "alt+shift+ctrl+d"
             }
         ],
         "configuration": {
